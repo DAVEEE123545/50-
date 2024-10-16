@@ -1,0 +1,89 @@
+
+        /* Main scrollable container */
+        .scrollable-container {
+            height: 82vh; /* Full height of the viewport */
+            overflow-y: auto; /* Enable vertical scrolling */
+           
+            box-sizing: border-box; /* Include padding in height calculations */
+        }
+
+        /* Dashboard cards (Dashboard Overview) */
+        .dashboard-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px; /* Apply the same gap as Facility Reports */
+        }
+
+        .card {
+            background-color: #e8e8f7;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 6px 20px rgba(6, 8, 7, 5.1);
+            cursor: pointer; /* Pointer cursor for clickable cards */
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #0b0c18;
+            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 600;
+        }
+
+        .card .icon {
+            font-size: 50px;
+            color: #3498db;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            font-size: 18px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        /* Welcome Section */
+        .welcome-section {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('admin_dashboard.css/barangay.jpg'); /* Replace with your image URL */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+            padding: 100px;
+            border-radius: 8px;
+            margin-bottom: 20px; /* Adjust margin below */
+            text-align: center;
+            position: relative;
+            height: 300px; /* Set a fixed height for the welcome section */
+        }
+
+        .welcome-text {
+            position:absolute; /* Ensure the text stays above the background image */
+            z-index: 0;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .dashboard-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .dashboard-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+   
