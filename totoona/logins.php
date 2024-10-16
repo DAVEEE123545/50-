@@ -216,9 +216,14 @@
                     <input type="password" id="password" name="password" placeholder="Password" required>
                 </div>
                 <div class="options">
-                    <label><input type="checkbox"> Remember Me</label>
-                    <a href="createpass.html">Forgot Password?</a>
-                </div>
+    <label>
+        <input type="checkbox" id="showPassword"> Show Password
+    </label>
+    <label>
+        <input type="checkbox" id="rememberMe"> Remember Me
+    </label>
+    <a href="createpass.html">Forgot Password?</a>
+</div>
                 <button type="submit" class="login-btn">Sign In</button>
             </form>
             <div class="signup">
@@ -226,7 +231,39 @@
             </div>
         </div>
     </div>
-    <script src="script.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    // Check if remember me is checked and populate the fields
+    if (localStorage.getItem("rememberMe") === "true") {
+        document.getElementById("username_or_email").value = localStorage.getItem("username_or_email");
+        document.getElementById("password").value = localStorage.getItem("password");
+        document.getElementById("rememberMe").checked = true;
+    }
+
+    // Show/Hide password functionality
+    document.getElementById("showPassword").addEventListener("change", function () {
+        const passwordField = document.getElementById("password");
+        passwordField.type = this.checked ? "text" : "password";
+    });
+
+    // Store credentials on form submit
+    document.querySelector(".login-form").addEventListener("submit", function () {
+        const rememberMe = document.getElementById("rememberMe").checked;
+        const usernameOrEmail = document.getElementById("username_or_email").value;
+        const password = document.getElementById("password").value;
+
+        if (rememberMe) {
+            localStorage.setItem("rememberMe", "true");
+            localStorage.setItem("username_or_email", usernameOrEmail);
+            localStorage.setItem("password", password); // Store password
+        } else {
+            localStorage.removeItem("rememberMe");
+            localStorage.removeItem("username_or_email");
+            localStorage.removeItem("password");
+        }
+    });
+});
+</script>
 </body>
 
 </html>
